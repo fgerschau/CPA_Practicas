@@ -1,0 +1,6 @@
+/var/spool/torque/mom_priv/jobs/135457.SC: línea 5: 30056 Violación de segmento  OMP_NUM_THREADS=1 ./pencaja3
+/var/spool/torque/mom_priv/jobs/135457.SC: línea 6: 30057 Violación de segmento  OMP_NUM_THREADS=2 ./pencaja3
+/var/spool/torque/mom_priv/jobs/135457.SC: línea 7: 30059 Violación de segmento  OMP_NUM_THREADS=4 ./pencaja3
+/var/spool/torque/mom_priv/jobs/135457.SC: línea 8: 30063 Violación de segmento  OMP_NUM_THREADS=8 ./pencaja3
+/var/spool/torque/mom_priv/jobs/135457.SC: línea 9: 30071 Violación de segmento  OMP_NUM_THREADS=16 ./pencaja3
+/var/spool/torque/mom_priv/jobs/135457.SC: línea 10: 30087 Violación de segmento  OMP_NUM_THREADS=32 ./pencaja3

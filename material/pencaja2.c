@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
   char
   //*entrada = "/labos/alumnos/aram/asigDSIC/ETSINF/cpa/p2/binLenna1024.ppm",
 	//*entrada = "/labos/asignaturas/ETSINF/cpa/p2/binLenna1024.ppm",
-*entrada = "/labos/asignaturas/ETSINF/cpa/p2/binLenna1024c.ppm",
+*entrada ="/labos/asignaturas/ETSINF/cpa/p2/otras/crc.ppm",
 
   *salida = "Lennapencaja2.ppm";
 
