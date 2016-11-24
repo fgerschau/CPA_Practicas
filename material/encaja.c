@@ -137,7 +137,7 @@ int main(int argc, char *argv[])
   char
   //*entrada = "/labos/alumnos/aram/asigDSIC/ETSINF/cpa/p2/binLenna1024.ppm",
 	//*entrada = "/labos/asignaturas/ETSINF/cpa/p2/binLenna1024.ppm",
-*entrada = "/labos/asignaturas/ETSINF/cpa/p2/otras/nic.ppm",
+*entrada = "/labos/asignaturas/ETSINF/cpa/p2/otras/crc.ppm",
 
   *salida = "Lenna.ppm";
 
@@ -166,7 +166,7 @@ double n1 = omp_get_wtime();
   encaja(&ima);
 
 double n2 = omp_get_wtime();
-printf("tiempo de encaja: %f\n", n2-n1);
+printf("Tiempo de encaja: %f\n", n2-n1);
 
   if (escribir) if (escribe_ppm(salida, &ima)) return 3;
 

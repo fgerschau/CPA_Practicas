@@ -113,7 +113,7 @@ void encaja(Imagen *ima)
   const long unsigned grande = 1 + ima->ancho * 768ul;
 
   n = ima->alto - 2;
-#pragma omp parallel for private (j,x, distancia_minima, linea_minima) reduction(+:distancia)
+#pragma omp parallel for private (j,x, distancia_minima, linea_minima, distancia) 
   for (i = 0; i < n; i++) {
     /* Buscamos la linea que mas se parece a la i y la ponemos en i+1 */
     distancia_minima = grande;
@@ -126,6 +126,7 @@ void encaja(Imagen *ima)
         linea_minima = j;
       }
     }
+    #pragma omp critical
     intercambia_lineas(ima, i+1, linea_minima);
   }
 }
@@ -136,7 +137,8 @@ int main(int argc, char *argv[])
   Imagen ima;
   char
   //*entrada = "/labos/alumnos/aram/asigDSIC/ETSINF/cpa/p2/binLenna1024.ppm",
-	//*entrada = "/labos/asignaturas/ETSINF/cpa/p2/binLenna1024.ppm",
+//	*entrada = "/labos/asignaturas/ETSINF/cpa/p2/binLenna1024.ppm",
+//Para hacer las medidas:
 *entrada = "/labos/asignaturas/ETSINF/cpa/p2/otras/crc.ppm",
 
   *salida = "Lennapencaja1.ppm";

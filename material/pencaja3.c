@@ -119,7 +119,7 @@ void encaja(Imagen *ima)
     distancia_minima = grande;
     for (j = i + 1; j < ima->alto; j++) {
       distancia = 0;
-#pragma omp parallel for private(i,j) reduction(+:distancia) 
+      #pragma omp parallel for reduction(+:distancia) 
       for (x = 0; x < ima->ancho; x++)
         distancia += diferencia(&A(x, i), &A(x, j));
       if (distancia < distancia_minima) {
@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
   char
   //*entrada = "/labos/alumnos/aram/asigDSIC/ETSINF/cpa/p2/binLenna1024.ppm",
 	//*entrada = "/labos/asignaturas/ETSINF/cpa/p2/binLenna1024.ppm",
-*entrada = "/labos/asignaturas/ETSINF/cpa/p2/binLenna1024c.ppm",
+*entrada = "/labos/asignaturas/ETSINF/cpa/p2/otras/crc.ppm",
 
   *salida = "Lennapencaja3.ppm";
 
@@ -167,7 +167,8 @@ double n1 = omp_get_wtime();
   encaja(&ima);
 
 double n2 = omp_get_wtime();
-printf("tiempo de encaja: %f\n", n2-n1);
+int hilos = omp_get_num_threads();
+printf("Hilos usados: %d\n Tiempo de encaja: %f\n",hilos, n2-n1);
 
   if (escribir) if (escribe_ppm(salida, &ima)) return 3;
 
