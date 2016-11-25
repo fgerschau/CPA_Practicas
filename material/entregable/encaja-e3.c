@@ -117,20 +117,16 @@ void encaja(Imagen *ima)
   for (i = 0; i < n; i++) {
     /* Buscamos la linea que mas se parece a la i y la ponemos en i+1 */
     distancia_minima = grande;
-    #pragma omp parallel for private (x,distancia)
     for (j = i + 1; j < ima->alto; j++) {
       distancia = 0;
-      for (x = 0; x < ima->ancho&& distancia_minima>distancia; x++)
+      for (x = 0; x < ima->ancho && distancia_minima>distancia; x++){
         distancia += diferencia(&A(x, i), &A(x, j));
+	}
       if (distancia < distancia_minima) {
-	#pragma omp critical
-	if(distancia<distancia_minima){
-		distancia_minima = distancia;    
-		linea_minima = j;
-      	}
-      }	 
-   } 
-
+        distancia_minima = distancia;
+        linea_minima = j;
+      }
+    }
     intercambia_lineas(ima, i+1, linea_minima);
   }
 }
@@ -141,11 +137,10 @@ int main(int argc, char *argv[])
   Imagen ima;
   char
   //*entrada = "/labos/alumnos/aram/asigDSIC/ETSINF/cpa/p2/binLenna1024.ppm",
-	//*entrada = "/labos/asignaturas/ETSINF/cpa/p2/binLenna1024.ppm",
-//Para hacer medidas:
-*entrada ="/labos/asignaturas/ETSINF/cpa/p2/otras/crc.ppm",
+//	*entrada = "/labos/asignaturas/ETSINF/cpa/p2/binLenna1024.ppm",
+*entrada = "/labos/asignaturas/ETSINF/cpa/p2/otras/crc.ppm",
 
-  *salida = "Lennapencaja2.ppm";
+  *salida = "Lenna.ppm";
 
   while (*++argv) {
     if (**argv == '-') ++*argv;
@@ -170,8 +165,8 @@ int main(int argc, char *argv[])
 
 double n1 = omp_get_wtime();
   encaja(&ima);
-double n2 = omp_get_wtime();
 
+double n2 = omp_get_wtime();
 printf("Tiempo de encaja: %f\n", n2-n1);
 
   if (escribir) if (escribe_ppm(salida, &ima)) return 3;
