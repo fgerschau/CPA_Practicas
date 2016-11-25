@@ -172,7 +172,7 @@ double n1 = omp_get_wtime();
   encaja(&ima);
 double n2 = omp_get_wtime();
 
-printf(" Tiempo de encaja: %f\n", n2-n1);
+printf("Tiempo de encaja: %f\n", n2-n1);
 
   if (escribir) if (escribe_ppm(salida, &ima)) return 3;
 

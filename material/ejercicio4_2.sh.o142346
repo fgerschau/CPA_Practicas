@@ -1,0 +1,12 @@
+Con 1 hilo:
+Tiempo de encaja: 0.065798
+Con 2 hilos:
+Tiempo de encaja: 0.068284
+Con 4 hilos:
+Tiempo de encaja: 0.067447
+Con 8 hilos
+Tiempo de encaja: 0.081109
+Con 16 hilos:
+Tiempo de encaja: 0.091436
+Con 32 hilos:
+Tiempo de encaja: 0.105429

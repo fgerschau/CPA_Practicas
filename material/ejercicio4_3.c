@@ -120,7 +120,7 @@ void encaja(Imagen *ima)
     for (j = i + 1; j < ima->alto; j++) {
       distancia = 0;
       #pragma omp parallel for reduction(+:distancia) 
-      for (x = 0; x < ima->ancho; x++)
+      for (x = 0; x < ima->ancho && distancia_minima<distancia; x++)
         distancia += diferencia(&A(x, i), &A(x, j));
       if (distancia < distancia_minima) {
         distancia_minima = distancia;
