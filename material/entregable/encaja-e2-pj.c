@@ -123,11 +123,11 @@ void encaja(Imagen *ima)
       for (x = 0; x < ima->ancho; x++)
         distancia += diferencia(&A(x, i), &A(x, j));
       if (distancia < distancia_minima) {
-	#pragma omp critical
-	if(distancia<distancia_minima){
-		distancia_minima = distancia;    
-		linea_minima = j;
-      	}
+    	  #pragma omp critical
+      	if(distancia<distancia_minima){
+      		distancia_minima = distancia;    
+      		linea_minima = j;
+        }
       }	 
    } 
 
@@ -168,9 +168,9 @@ int main(int argc, char *argv[])
 
   if (lee_ppm(entrada, &ima)) return 2;
 
-double n1 = omp_get_wtime();
+  double n1 = omp_get_wtime();
   encaja(&ima);
-double n2 = omp_get_wtime();
+  double n2 = omp_get_wtime();
 
 printf("Tiempo de encaja: %f\n", n2-n1);
 
